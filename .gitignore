@@ -1,0 +1,42 @@
+# Python-related files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.env
+
+# Virtual environments
+venv/
+env/
+virt/
+
+# Django-specific files
+db.sqlite3
+*.log
+*.pot
+*.py[cod]
+*.sqlite3
+*.sqlite3-journal
+*.DS_Store
+
+# Ignore settings with sensitive data
+.env
+/local_settings.py
+
+# Static and media files
+/static/
+/media/
+
+# Migrations
+*/migrations/*
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# MacOS files
+.DS_Store
+
+#pip
+Pipfile
+Pipfile.lock

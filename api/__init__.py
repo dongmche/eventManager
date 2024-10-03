@@ -1,0 +1,1 @@
+from eventManager.models import Event, RegistrationCode

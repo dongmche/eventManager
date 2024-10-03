@@ -1,0 +1,55 @@
+{%extends  'base.html' %}
+{%block content%}
+
+{%if event%}
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{event.thumbnail}}" alt={{event.title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{event.title}}</h5>
+    <h6 class="card-title">start date : {{event.start_date}}</h6>
+    <h6 class="card-title">end date : {{event.start_date}}</h6>
+    <a href='/register/{{event.id}}/' class="btn btn-primary">register</a>
+  </div>
+
+<form action="/cancelRegistration/{{ event.id }}/" method="POST" class="d-flex" onsubmit="return validateInput()">
+    {% csrf_token %}
+
+    <input type="text" id="confirmation_code" name="confirmation_code" placeholder="Enter registration code to cancel"
+           class="form-control form-control-sm me-2" required>
+    <button type="submit" class="btn btn-primary">Cancel registration</button>
+</form>
+</div>
+
+<script>
+function validateInput() {
+    var code = document.getElementById('confirmation_code').value;
+    if (!/^\d+$/.test(code)) {
+        alert('Please enter only numeric values in a code.');
+        return false;
+    }
+    return true;
+}
+</script>
+
+
+
+
+
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+
+
+{%endif%}
+
+
+
+
+{%endblock%}
